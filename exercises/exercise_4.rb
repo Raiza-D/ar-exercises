@@ -25,3 +25,5 @@ end
   puts "#{store.name}"
   puts "#{store.annual_revenue}"
 end
+
+# Only use instance variables when you want to use that variable in another file.
