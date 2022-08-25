@@ -7,6 +7,7 @@ puts "----------"
 
 # Your code goes here ...
 
+# When looking for id, use the find_by method instead of where
 @store3 = Store.find_by(id: 3)
 @store3.destroy
 
