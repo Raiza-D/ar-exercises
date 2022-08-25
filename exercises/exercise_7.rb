@@ -10,6 +10,8 @@ puts "Exercise 7"
 puts "----------"
 
 # Your code goes here ...
+
+# Validations for Employee model
 class Employee
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -17,11 +19,13 @@ class Employee
   validates :store_id, presence: true
 end
 
+# Validations for Store model
 class Store
   validates :name, presence: true, length: { minimum: 3 }
   validates :annual_revenue, presence: true, numericality: true, length: { minimum: 0 }
   validate :must_carry_apparel
 
+  # Custom validation method to ensure store being added has either apparel columns populated with value 
   def must_carry_apparel
     if !mens_apparel.present? || !womens_apparel.present?
       errors.add("mens_apparel or womens_apparel, cannot be blank")
@@ -29,7 +33,9 @@ class Store
   end
 end
 
-delta_store = Store.create(name: "Delta")
-delta_store.save
+# Ask user for a store name (store it in a variable)
+print "Provide a store: "
+@some_store = gets.chomp
 
-delta_store.errors
+@another_store = Store.create(name: @some_store)
+puts @another_store.errors.full_messages
