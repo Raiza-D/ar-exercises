@@ -10,3 +10,5 @@ puts "----------"
 
 @store1.name = "New Westminster"
 @store1.save
+
+# Here the .save method is needed when you're updating a record in the DB
